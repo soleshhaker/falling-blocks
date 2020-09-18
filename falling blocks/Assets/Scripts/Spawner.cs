@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject Block;
     Vector2 screenWidth;
-    public float secondsToSpawn = 1;
+    public Vector2 secondsBeetweenSpawnMinMax;
     public float nextSpawn;
 
     public Vector2 spawnMinMax;
@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         if (Time.time > nextSpawn) {
+            float secondsToSpawn = Mathf.Lerp(secondsBeetweenSpawnMinMax.y, secondsBeetweenSpawnMinMax.x, Difficulty.GetDiffPercent());
             nextSpawn = Time.time + secondsToSpawn;
 
             float spawnAngle = Random.Range(-spawnAngleMax, spawnAngleMax);
