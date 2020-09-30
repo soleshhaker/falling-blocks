@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float speed = 7f;
 
     public float screenWidth;
+
+    public event System.Action OnPlayerDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,10 @@ public class Player : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
+        if(OnPlayerDeath != null)
+        {
+            OnPlayerDeath();
+        }
         Destroy(gameObject);
     }
 }

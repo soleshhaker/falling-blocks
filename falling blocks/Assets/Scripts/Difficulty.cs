@@ -8,6 +8,6 @@ public class Difficulty
 
     public static float GetDiffPercent()
     {
-        return Mathf.Clamp01(Time.time / secondsToMaxDiff);
+        return Mathf.Clamp01(Time.timeSinceLevelLoad / secondsToMaxDiff);
     }
 }
